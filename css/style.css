@@ -136,7 +136,7 @@ label:hover::before{
 .price__plan ul li{
     border-top: 1px solid var(--light-grayish-blue);
     padding: 1rem 0;
-    font-size: 1.2rem;
+    font-size: .9rem;
 }
 .price__plan ul li:last-child{
     border-bottom: 1px solid var(--light-grayish-blue);
