@@ -1,0 +1,218 @@
+:root{
+
+    --white: #FFF;
+    --light-purple:hsl(237, 63%, 64%);
+    --very-light-purple:hsl(236, 72%, 79%);
+    --very-light-grayish-blue: hsl(240, 78%, 98%);
+    --light-grayish-blue: hsl(234, 14%, 74%);
+    --grayish-blue: hsl(233, 13%, 49%);
+    --dark-grayish-blue: hsl(232, 13%, 33%);
+    
+    --gradient-card: linear-gradient(hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+    --gradient-button: linear-gradient(90deg,hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+    --gradient-check: linear-gradient(90deg,hsl(236, 100%, 92%), hsl(236, 88%, 84%));
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html{
+    font-size: 15px;
+}
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--very-light-grayish-blue);
+    color: var(--dark-grayish-blue);
+}
+main{
+    background-image: url("../images/bg-top.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 13rem -2rem;
+}
+
+.container{
+    max-width: 1440px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+    padding: 5rem 0;
+    gap: 4rem;
+    
+}
+
+.price__header div{
+    margin-top: 2.5rem;
+
+}
+input[type="checkbox"]{
+    display: none;
+    appearance: none;
+}
+label{    
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    left: -3rem;
+    background-color: transparent;
+    appearance: none;
+    
+}
+label::before{
+    content: '';
+    background-image: var(--gradient-button);
+    height: 2rem;
+    width: 3.5rem;
+    border-radius: 2rem;
+    position: absolute;
+    left: 6rem;
+    top: -.2rem;
+}
+label::after{
+    content: 'Monthly';
+    position: absolute;
+    left: 11.5rem;
+}
+.circle{    
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background-color: var(--very-light-grayish-blue);
+    position: absolute;
+    top: 0.05rem;
+    left: 6.2rem;
+    transition: 0.5s;
+}
+input[type="checkbox"]:checked ~ label .circle{
+    left: 7.8rem;
+}
+
+label:hover::before{
+    background-image: var(--gradient-check);    
+}
+
+.price__container{    
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.price__plan {
+    width: 22rem;
+    background-color: var(--white);
+    border-radius: 1rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;    
+}
+.price__plan h2{
+    font-size: 1.5rem;
+}
+.plan{
+    font-size: 4rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .3rem;
+}
+.plan span{
+    font-size: 2rem;
+}
+.price__plan ul{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+}
+.price__plan ul li{
+    border-top: 1px solid var(--light-grayish-blue);
+    padding: 1rem 0;
+    font-size: 1.2rem;
+}
+.price__plan ul li:last-child{
+    border-bottom: 1px solid var(--light-grayish-blue);
+}
+.price__plan:nth-child(even){
+    background-image: var(--gradient-card);
+    color: var(--very-light-grayish-blue);
+}
+.price__plan:nth-child(even) ul li{
+    border-color: var(--very-light-grayish-blue);
+}
+
+.price__plan .monthly{
+    display: none;
+}
+
+.price__plan .monthly.activate{
+    display: block;
+}
+
+.price__plan .annually.activate{
+    display: none;
+}
+
+.price__plan button{
+    border: none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    padding: 1rem 0;
+    margin-top: 1rem;
+    background-image: var(--gradient-button);
+    color: var(--very-light-grayish-blue);
+    cursor: pointer;
+    transition: .5s;
+}
+.price__plan button:hover{
+    background-image: unset;
+    background-color: var(--white);
+    outline: 1px solid var(--light-purple);
+    color: var(--very-light-purple);
+}
+
+.price__plan:nth-child(even) button{
+    color: var(--light-purple);
+    background-image: unset;
+    background-color: var(--white);
+}
+.price__plan:nth-child(even) button:hover{
+    background-color: transparent;
+    outline: 1px solid var(--white);
+    color: var(--white);
+}
+
+@media screen and (min-width: 768px) {
+    .price__container{
+        flex-direction: row;
+        align-items: center;
+        gap: 0;
+    }
+    .price__plan:first-child{
+        border-radius: 1rem 0 0 1rem;
+    }
+    .price__plan:last-child{
+        border-radius: 0 1rem 1rem 0;
+    }
+
+    .price__plan:nth-child(even){
+        padding: 3.5rem 2rem;
+    }
+    main{
+        background-image: url("../images/bg-top.svg"), url("../images/bg-bottom.svg");
+        background-repeat: no-repeat, no-repeat;
+        background-size: 38%, 33%;
+        background-position: top right, bottom left;
+    }
+}
+
